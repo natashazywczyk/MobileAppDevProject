@@ -16,8 +16,8 @@ const routes: Routes = [
         loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../bucketlist/bucketlist.module').then(m => m.Tab3PageModule)
+        path: 'bucketlist',
+        loadChildren: () => import('../bucketlist/bucketlist.module').then(m => m.BucketListPageModule)
       },
       {
         path: '',
