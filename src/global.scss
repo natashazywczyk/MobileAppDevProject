@@ -36,16 +36,28 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
 
+@import url('https://fonts.googleapis.com/css2?family=Delius&family=Outfit:wght@100..900&display=swap');
+
+.outfit-regular {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+  }
+
 ion-content {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-family: "Outfit", sans-serif; 
   }
   
   .text-container {
     padding: 16px;
-    max-width: 400px;
+    max-width: 450px;
     margin: 0 auto;
   }
+
+
   
