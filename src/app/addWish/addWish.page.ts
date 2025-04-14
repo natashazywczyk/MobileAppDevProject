@@ -28,7 +28,7 @@ export class AddWishPage implements OnInit {
 
    submitForm() {
     if (!this.wishTitle || !this.wishDescription || !this.wishType || !this.dateGoal || !this.wishPicture) {
-      alert('Please fill in all required fields.');
+      alert('Please fill in all fields.');
       return;
     }
 
