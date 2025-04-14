@@ -7,9 +7,14 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class AddWishPage {
-  dateAdded: string = ''; // Property to store the selected date
+  dateAdded: string = ''; //Store date added
+  dateGoal: string = ''; //Store date goal
   startDate: string = '';
   endDate: string = '';
+  wishTitle: string = ''; //Store wish title
+  wishDescription: string = ''; //Store wish description
+  wishType: string = ''; //Store wish type
+  wishPicture: string = ''; //Store wish picture
 
   constructor() {
     // Set the minimum date to today
