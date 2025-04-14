@@ -13,5 +13,65 @@
     </ion-toolbar>
   </ion-header>
 
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <br>
+      <ion-input type="text" placeholder="Enter title"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <br>
+      <ion-input type="text" placeholder="Enter description of wish"></ion-input>
+    </ion-item>
+
+    <br>
+
+   <ion-item>
+    <ion-label position="floating">Wish Type</ion-label>
+    <br>
+    <ion-select aria-label="type" interface="popover" placeholder="Select type">
+      <ion-select-option value="hobby">Hobby</ion-select-option>
+      <ion-select-option value="holiday">Holiday</ion-select-option>
+      <ion-select-option value="food">Food</ion-select-option>
+      <ion-select-option value="activity">Activity</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+    <br>
+
+    <ion-item>
+      <ion-label position="floating">Date Added</ion-label>
+      <br>
+      <ion-datetime
+        presentation="date"
+        placeholder="Select a date"
+        [(ngModel)]="dateAdded"
+        [min]="startDate"
+        [max]="endDate"
+        aria-label="Select Date Added"> <!--Improves focus on element-->
+      </ion-datetime>
+    </ion-item>
+
+    <br>
+
+    <ion-item>
+      <ion-label position="floating">Date Goal</ion-label>
+      <br>
+      <ion-input type="date" placeholder="Enter goal"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <ion-item>
+      <ion-label position="floating">Wish Picture</ion-label>
+      <br>
+      <ion-input type="url" placeholder="Enter picture to match wish"></ion-input>
+    </ion-item>
+  </ion-list>
+
   <app-explore-container name="Add Wish page"></app-explore-container>
 </ion-content>
