@@ -1,0 +1,6 @@
+.transparent-toolbar {
+    --background: transparent; /* Makes the toolbar background transparent */
+    --ion-background-color: transparent; /* Ensures Ionic's background color is transparent */
+    box-shadow: none; /* Removes any shadow */
+    border: none; /* Removes any border */
+  }
