@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tab1',
@@ -6,11 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['addWish.page.scss'],
   standalone: false,
 })
-export class AddWishPage {
+export class AddWishPage implements OnInit {
   dateAdded: string = ''; //Store date added
   dateGoal: string = ''; //Store date goal
-  startDate: string = '';
-  endDate: string = '';
+  startDate: string = ''; //Store start date for calender
+  endDate: string = ''; //Store end date for calender
   wishTitle: string = ''; //Store wish title
   wishDescription: string = ''; //Store wish description
   wishType: string = ''; //Store wish type
@@ -42,6 +42,16 @@ export class AddWishPage {
       wishPicture: this.wishPicture,
     });
   }
+
+    ngOnInit() {
+      // Check localStorage for the saved theme state
+      const savedTheme = localStorage.getItem('dark-mode');
+      const isDark = savedTheme === 'true'; // Convert string to boolean
+  
+      // Apply the theme globally
+      document.documentElement.classList.toggle('ion-palette-dark', isDark);
+    }
 }
+
 
 
