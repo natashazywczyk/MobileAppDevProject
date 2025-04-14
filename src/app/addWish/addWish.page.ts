@@ -25,5 +25,23 @@ export class AddWishPage {
      const futureDate = new Date(2050, 11, 31);
      this.endDate = futureDate.toISOString().split('T')[0]; // Format as YYYY-MM-DD, as calender reads it in this format
    }
+
+   submitForm() {
+    if (!this.wishTitle || !this.wishDescription || !this.wishType || !this.dateAdded || !this.dateGoal || !this.wishPicture) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+
+    // Handle form submission logic here
+    console.log('Form submitted successfully:', {
+      title: this.wishTitle,
+      description: this.wishDescription,
+      wishType: this.wishType,
+      dateAdded: this.dateAdded,
+      dateGoal: this.dateGoal,
+      wishPicture: this.wishPicture,
+    });
+  }
 }
+
 
