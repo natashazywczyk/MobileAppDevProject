@@ -1,11 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>theme</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Theme</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div>
     <p>Change your app theme here</p>
+    <ion-toggle [(ngModel)]="paletteToggle" (ionChange)="toggleChange($event)" justify="space-between">Dark Mode</ion-toggle>
   </div>
 </ion-content>
