@@ -27,7 +27,7 @@ export class AddWishPage implements OnInit {
    }
 
    submitForm() {
-    if (!this.wishTitle || !this.wishDescription || !this.wishType || !this.dateAdded || !this.dateGoal || !this.wishPicture) {
+    if (!this.wishTitle || !this.wishDescription || !this.wishType || !this.dateGoal || !this.wishPicture) {
       alert('Please fill in all required fields.');
       return;
     }
@@ -37,7 +37,7 @@ export class AddWishPage implements OnInit {
       title: this.wishTitle,
       description: this.wishDescription,
       wishType: this.wishType,
-      dateAdded: this.dateAdded,
+      dateAdded: this.startDate,
       dateGoal: this.dateGoal,
       wishPicture: this.wishPicture,
     });
