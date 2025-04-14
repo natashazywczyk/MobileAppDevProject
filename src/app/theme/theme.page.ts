@@ -11,20 +11,24 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, IonicModule, FormsModule],
 })
 export class ThemePage implements OnInit {
-
   paletteToggle = false;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    // Use matchMedia to check the user preference
-    const prefersDark = window.matchMedia('(prefers-color-scheme: light)');
+    // Check localStorage for the saved theme state
+    const savedTheme = localStorage.getItem('dark-mode');
+    const isDark = savedTheme === 'true';
+    this.initializeDarkPalette(isDark);
 
-    // Initialize the dark palette based on the initial
-    this.initializeDarkPalette(prefersDark.matches);
+    // Use matchMedia to check the user preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
     // Listen for changes to the prefers-color-scheme media query
-    prefersDark.addEventListener('change', (mediaQuery) => this.initializeDarkPalette(mediaQuery.matches));
+    prefersDark.addEventListener('change', (mediaQuery) => {
+      const systemPrefersDark = mediaQuery.matches;
+      this.initializeDarkPalette(systemPrefersDark);
+    });
   }
 
   // Check/uncheck the toggle and update the palette based on isDark
@@ -35,12 +39,13 @@ export class ThemePage implements OnInit {
 
   // Listen for the toggle check/uncheck to toggle the dark palette
   toggleChange(event: CustomEvent) {
-    this.toggleDarkPalette(event.detail.checked);
+    const isDark = event.detail.checked;
+    this.toggleDarkPalette(isDark);
+    localStorage.setItem('dark-mode', String(isDark)); // Save the state in localStorage
   }
 
   // Add or remove the "ion-palette-dark" class on the html element
   toggleDarkPalette(shouldAdd: boolean) {
     document.documentElement.classList.toggle('ion-palette-dark', shouldAdd);
   }
-
 }
