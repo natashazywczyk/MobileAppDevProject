@@ -13,8 +13,8 @@ import { ThemePage } from './theme.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ThemePageRoutingModule
+    ThemePageRoutingModule,
+    ThemePage,
   ],
-  declarations: [ThemePage]
 })
 export class ThemePageModule {}
