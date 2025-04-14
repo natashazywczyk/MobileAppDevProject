@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -8,6 +9,10 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private router: Router) {}
+
+  goToTheme() {
+    this.router.navigate(['/theme']); // Navigates to the theme page
+  }
 
 }
