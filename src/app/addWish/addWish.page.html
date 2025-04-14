@@ -30,32 +30,16 @@
 
     <br>
 
-   <ion-item>
-    <ion-label position="floating">Wish Type</ion-label>
-    <br>
-    <ion-select aria-label="type" interface="popover" placeholder="Select type" [(ngModel)]="wishType" required>
-      <ion-select-option value="hobby">Hobby</ion-select-option>
-      <ion-select-option value="holiday">Holiday</ion-select-option>
-      <ion-select-option value="food">Food</ion-select-option>
-      <ion-select-option value="activity">Activity</ion-select-option>
-    </ion-select>
-  </ion-item>
-
-    <br>
-
     <ion-item>
-      <ion-label position="floating">Date Added</ion-label>
+      <ion-label position="floating">Wish Type</ion-label>
       <br>
-      <ion-datetime
-        presentation="date"
-        placeholder="Select a date"
-        [(ngModel)]="dateAdded"
-        [min]="startDate"
-        [max]="endDate"
-        aria-label="Select Date Added"
-        required> <!--Improves focus on element-->
-      </ion-datetime>
-    </ion-item>
+      <ion-select aria-label="type" interface="popover" placeholder="Select type" [(ngModel)]="wishType" required>
+        <ion-select-option value="hobby">Hobby</ion-select-option>
+        <ion-select-option value="holiday">Holiday</ion-select-option>
+        <ion-select-option value="food">Food</ion-select-option>
+        <ion-select-option value="activity">Activity</ion-select-option>
+      </ion-select>
+     </ion-item>
 
     <br>
 
