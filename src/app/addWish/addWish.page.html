@@ -17,7 +17,7 @@
     <ion-item>
       <ion-label position="floating">Title</ion-label>
       <br>
-      <ion-input type="text" placeholder="Enter title"></ion-input>
+      <ion-input type="text" placeholder="Enter title" [(ngModel)]="wishTitle" required></ion-input>
     </ion-item>
 
     <br>
@@ -25,7 +25,7 @@
     <ion-item>
       <ion-label position="floating">Description</ion-label>
       <br>
-      <ion-input type="text" placeholder="Enter description of wish"></ion-input>
+      <ion-input type="text" placeholder="Enter description of wish" [(ngModel)]="wishDescription" required></ion-input>
     </ion-item>
 
     <br>
@@ -33,7 +33,7 @@
    <ion-item>
     <ion-label position="floating">Wish Type</ion-label>
     <br>
-    <ion-select aria-label="type" interface="popover" placeholder="Select type">
+    <ion-select aria-label="type" interface="popover" placeholder="Select type" [(ngModel)]="wishType" required>
       <ion-select-option value="hobby">Hobby</ion-select-option>
       <ion-select-option value="holiday">Holiday</ion-select-option>
       <ion-select-option value="food">Food</ion-select-option>
@@ -52,7 +52,8 @@
         [(ngModel)]="dateAdded"
         [min]="startDate"
         [max]="endDate"
-        aria-label="Select Date Added"> <!--Improves focus on element-->
+        aria-label="Select Date Added"
+        required> <!--Improves focus on element-->
       </ion-datetime>
     </ion-item>
 
@@ -61,7 +62,15 @@
     <ion-item>
       <ion-label position="floating">Date Goal</ion-label>
       <br>
-      <ion-input type="date" placeholder="Enter goal"></ion-input>
+      <ion-datetime
+        presentation="date"
+        placeholder="Select a date"
+        [(ngModel)]="dateGoal"
+        [min]="startDate"
+        [max]="endDate"
+        aria-label="Select Date Goal"
+        required> <!--Improves focus on element-->
+      </ion-datetime>
     </ion-item>
 
     <br>
@@ -69,7 +78,7 @@
     <ion-item>
       <ion-label position="floating">Wish Picture</ion-label>
       <br>
-      <ion-input type="url" placeholder="Enter picture to match wish"></ion-input>
+      <ion-input type="url" placeholder="Enter picture to match wish" [(ngModel)]="wishPicture" required></ion-input>
     </ion-item>
   </ion-list>
 
