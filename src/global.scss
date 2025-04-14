@@ -53,6 +53,10 @@ ion-content {
     font-family: "Outfit", sans-serif; 
   }
   
+body {
+  font-family: "Outfit", sans-serif !important; 
+}
+  
   .text-container {
     padding: 16px;
     max-width: 450px;
@@ -61,6 +65,11 @@ ion-content {
 
   ion-item {
     --transition: none;
+    font-family: "Outfit", sans-serif !important 
+  }
+
+  ion-label {
+    font-family: "Outfit", sans-serif !important 
   }
 
 
