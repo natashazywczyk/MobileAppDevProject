@@ -46,6 +46,8 @@ export class AddWishPage implements OnInit {
 
     this.wishService.addWish(newWish);
     alert('Wish has been added');
+
+    this.resetForm();
   }
 
     ngOnInit() {
@@ -55,6 +57,14 @@ export class AddWishPage implements OnInit {
   
       // Apply the theme globally
       document.documentElement.classList.toggle('ion-palette-dark', isDark);
+    }
+
+    resetForm() {
+      this.wishTitle = '';
+      this.wishDescription = '';
+      this.wishType = '';
+      this.dateGoal = '';
+      this.wishPicture = '';
     }
 }
 
