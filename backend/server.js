@@ -38,6 +38,24 @@ const wishSchema = new mongoose.Schema({
 //Generate model based schema
 const wishModel = new mongoose.model('mywishes', wishSchema);
 
+// POST route to add a new wish
+app.post('/api/wishes', (req, res) => {
+    const { title, dateAdded, description, wishPicture, wishType, dateGoal } = req.body; // Store new wish
+
+    // Create a new wish instance
+    const newWish = new wishModel({ title, dateAdded, description, wishPicture, wishType, dateGoal });
+
+      // Save wish to the database using Promises
+      newWish
+        .save()
+        .then((savedWish) => {
+            res.status(201).json({ message: 'Wish created successfully', wish: savedWish }); //Sends new wish
+        })
+        .catch((err) => {
+            res.status(500).json({ error: 'Failed to save wish', details: err }); // Handle errors
+        });
+});
+
 //Only run on specified port when running
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
