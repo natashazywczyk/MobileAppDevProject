@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WishService } from '../services/wish.service';
 
 @Component({
   selector: 'app-tab3',
@@ -8,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BucketListPage implements OnInit {
 
-  constructor() {}
+  wishes: any[] = []; // Array to store wishes
+
+  constructor(private wishService: WishService) {}
 
 
   ngOnInit() {
@@ -18,5 +21,7 @@ export class BucketListPage implements OnInit {
 
     // Apply the theme globally
     document.documentElement.classList.toggle('ion-palette-dark', isDark);
+
+    this.wishes = this.wishService.getWishes();
   }
 }
