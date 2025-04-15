@@ -15,9 +15,9 @@
 
   <ion-list>
     <ion-card *ngFor="let wish of wishes">
-      <img [alt]="wish.wishTitle" [src]="wish.wishPicture" />
+      <img [alt]="wish.title" [src]="wish.wishPicture" />
       <ion-card-header>
-        <ion-card-title>{{ wish.wishTitle }}</ion-card-title>
+        <ion-card-title>{{ wish.title }}</ion-card-title>
         <ion-card-subtitle>{{ wish.wishType }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
