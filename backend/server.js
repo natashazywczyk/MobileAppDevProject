@@ -21,4 +21,18 @@ app.use(bodyParser.json());
 
 //Database Server Connection String
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://admin:admin@cluster0.n2bkl.mongodb.net/BucketlistDB');
+mongoose.connect('mongodb+srv://admin:admin@cluster0.n2bkl.mongodb.net/BucketListDB');
+
+// Wish Schema and Model
+const wishSchema = new mongoose.Schema({
+    title: String,
+    description: String,
+    wishType: String,
+    dateAdded: String,
+    dateGoal: String,
+    wishPicture: String,
+});
+
+//Object to represent Database
+//Generate model based schema
+const wishModel = new mongoose.model('mywishes', wishSchema);
