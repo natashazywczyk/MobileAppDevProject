@@ -56,6 +56,14 @@ app.post('/api/wishes', (req, res) => {
         });
 });
 
+//Search for a particular wish ID, use for edit or delete functionality
+app.get('/api/wishes/:id', async(req, res) =>
+{
+    const wish = await wishModel.findById(req.params.id); // Searches for id within database
+    res.json(wish);
+})
+    
+
 //Only run on specified port when running
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
