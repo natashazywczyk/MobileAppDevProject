@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Bucket List Page
+      Your Bucket List
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,7 +9,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Bucket List Page</ion-title>
+      <ion-title size="large">Your Bucket List</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -23,6 +23,7 @@
       <ion-card-content>
         {{ wish.description }}
       </ion-card-content>
+      <a class="delete-link" (click)="deleteWish(wish._id)">Delete</a>
     </ion-card>
   </ion-list>
 
