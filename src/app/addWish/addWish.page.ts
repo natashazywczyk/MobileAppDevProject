@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WishService } from '../services/wish.service';
 
 @Component({
   selector: 'app-tab1',
@@ -16,7 +17,7 @@ export class AddWishPage implements OnInit {
   wishType: string = ''; //Store wish type
   wishPicture: string = ''; //Store wish picture
 
-  constructor() {
+  constructor(private wishService: WishService) {
     // Set the minimum date to today
     const today = new Date();
     this.startDate = today.toISOString().split('T')[0]; // Format as YYYY-MM-DD, as calender reads it in this format
@@ -33,14 +34,18 @@ export class AddWishPage implements OnInit {
     }
 
     // Handle form submission logic here
-    console.log('Form submitted successfully:', {
+    const newWish = {
       title: this.wishTitle,
       description: this.wishDescription,
       wishType: this.wishType,
       dateAdded: this.startDate,
       dateGoal: this.dateGoal,
       wishPicture: this.wishPicture,
-    });
+    };
+    console.log(newWish);
+
+    this.wishService.addWish(newWish);
+    alert('Wish has been added');
   }
 
     ngOnInit() {
