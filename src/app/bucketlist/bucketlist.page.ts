@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WishService } from '../services/wish.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-tab3',
@@ -8,20 +9,35 @@ import { WishService } from '../services/wish.service';
   standalone: false,
 })
 export class BucketListPage implements OnInit {
-
   wishes: any[] = []; // Array to store wishes
 
   constructor(private wishService: WishService) {}
 
-
   ngOnInit() {
-    // Check localStorage for the saved theme state
-    const savedTheme = localStorage.getItem('dark-mode');
-    const isDark = savedTheme === 'true'; // Convert string to boolean
+    // Load all wishes on initialization
+    this.loadWishes();
+  }
 
-    // Apply the theme globally
-    document.documentElement.classList.toggle('ion-palette-dark', isDark);
+  async loadWishes() {
+    try {
+      const data = await firstValueFrom(this.wishService.getWishes());
+      this.wishes = data; // Assign the fetched wishes to the local array
+    } 
+    catch (error) {
+      console.error('Error fetching wishes:', error);
+    }
+  }
 
-    this.wishes = this.wishService.getWishes();
+  async deleteWish(id: string) {
+    try {
+      await firstValueFrom(this.wishService.deleteWish(id));
+      
+      this.wishes = this.wishes.filter((wish) => wish._id !== id);
+      alert('Wish deleted successfully!');
+    } 
+    catch (error) {
+      console.error('Error deleting wish:', error);
+      alert('Failed to delete wish.');
+    }
   }
 }
