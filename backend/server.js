@@ -1,7 +1,8 @@
+//Create express application
 const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const app = express();
+const port = 4000; //make localhost port 4000
+
 
 //Added CORS Middleware to server
 const cors = require('cors');
@@ -36,3 +37,8 @@ const wishSchema = new mongoose.Schema({
 //Object to represent Database
 //Generate model based schema
 const wishModel = new mongoose.model('mywishes', wishSchema);
+
+//Only run on specified port when running
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
