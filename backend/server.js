@@ -18,3 +18,7 @@ app.use(function(req, res, next) {
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+//Database Server Connection String
+const mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://admin:admin@cluster0.n2bkl.mongodb.net/BucketlistDB');
