@@ -62,7 +62,14 @@ app.get('/api/wishes/:id', async(req, res) =>
     const wish = await wishModel.findById(req.params.id); // Searches for id within database
     res.json(wish);
 })
-    
+
+//Handles the movie deletion, server side
+app.delete('/api/wishes/:id', async (req, res) =>
+{
+    console.log('Deleting wish, ID: ', req.params.id);
+    const wish = await listModel.findByIdAndDelete(req.params.id); //wait until the id of wish is found
+    res.status(200).send({ message: "Wish successfully deleted", wish}); 
+});
 
 //Only run on specified port when running
 app.listen(port, () => {
