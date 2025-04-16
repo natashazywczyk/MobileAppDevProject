@@ -38,6 +38,14 @@ const wishSchema = new mongoose.Schema({
 //Generate model based schema
 const wishModel = new mongoose.model('mywishes', wishSchema);
 
+// GET route to fetch all wishes
+app.get('/api/wishes', async (req, res) => {
+     console.log('GET /api/wishes called');
+    const wishes = await wishModel.find({});
+
+    res.status(200).json(wishes)
+});
+
 // POST route to add a new wish
 app.post('/api/wishes', (req, res) => {
     const { title, dateAdded, description, wishPicture, wishType, dateGoal } = req.body; // Store new wish
@@ -67,7 +75,7 @@ app.get('/api/wishes/:id', async(req, res) =>
 app.delete('/api/wishes/:id', async (req, res) =>
 {
     console.log('Deleting wish, ID: ', req.params.id);
-    const wish = await listModel.findByIdAndDelete(req.params.id); //wait until the id of wish is found
+    const wish = await wishModel.findByIdAndDelete(req.params.id); //wait until the id of wish is found
     res.status(200).send({ message: "Wish successfully deleted", wish}); 
 });
 
