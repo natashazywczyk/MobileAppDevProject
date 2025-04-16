@@ -44,8 +44,17 @@ export class AddWishPage implements OnInit {
     };
     console.log(newWish);
 
-    this.wishService.addWish(newWish);
-    alert('Wish has been added');
+    this.wishService.addWish(newWish).subscribe(
+      (response) => {
+        console.log('Wish added successfully:', response);
+        alert('Wish has been added');
+        this.resetForm();
+      },
+      (error) => {
+        console.error('Error adding wish:', error);
+        alert('Failed to add wish. Please try again. Make sure all fields are filled in');
+      }
+    );
 
     this.resetForm();
   }
