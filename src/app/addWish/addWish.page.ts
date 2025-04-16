@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WishService } from '../services/wish.service';
+import { RefreshService } from '../services/refresh.service';
 
 @Component({
   selector: 'app-tab1',
@@ -17,7 +18,7 @@ export class AddWishPage implements OnInit {
   wishType: string = ''; //Store wish type
   wishPicture: string = ''; //Store wish picture
 
-  constructor(private wishService: WishService) {
+  constructor(private wishService: WishService, private refreshService: RefreshService) {
     // Set the minimum date to today
     const today = new Date();
     this.startDate = today.toISOString().split('T')[0]; // Format as YYYY-MM-DD, as calender reads it in this format
@@ -33,7 +34,7 @@ export class AddWishPage implements OnInit {
       return;
     }
 
-    // Handle form submission logic here
+    //Wish values to be pushed to database
     const newWish = {
       title: this.wishTitle,
       description: this.wishDescription,
@@ -44,11 +45,14 @@ export class AddWishPage implements OnInit {
     };
     console.log(newWish);
 
+    // Calls on WishService to add new wish to backend from frontend
     this.wishService.addWish(newWish).subscribe(
       (response) => {
         console.log('Wish added successfully:', response);
         alert('Wish has been added');
         this.resetForm();
+
+        this.refreshService.triggerRefresh(); //Refreshes page once new wish is added
       },
       (error) => {
         console.error('Error adding wish:', error);
