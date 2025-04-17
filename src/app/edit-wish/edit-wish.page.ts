@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WishService } from '../services/wish.service';
+import { RefreshService } from '../services/refresh.service';
 
 @Component({
   selector: 'app-edit-wish',
@@ -22,7 +23,8 @@ export class EditWishPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private wishService: WishService,
-    private router: Router
+    private router: Router,
+    private refreshService: RefreshService
   ) {
     const today = new Date();
     this.startDate = today.toISOString().split('T')[0]; // Format as YYYY-MM-DD
@@ -63,11 +65,14 @@ export class EditWishPage implements OnInit {
       dateGoal: this.dateGoal,
       wishPicture: this.wishPicture,
     };
-    
+
     this.wishService.updateWish(this.wishId, updatedWish).subscribe(
       (response) => {
         console.log('Wish updated successfully:', response);
         alert('Wish updated successfully!');
+        
+        this.refreshService.triggerRefresh();
+
         this.router.navigate(['/tabs/bucketlist']); // Navigate to the bucket list page
       },
       (error) => {
