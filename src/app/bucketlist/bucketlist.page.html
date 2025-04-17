@@ -24,6 +24,7 @@
         {{ wish.description }}
         <br><br>
         <a class="delete-link" (click)="deleteWish(wish._id)">Delete</a>
+        <a class="edit-link" [routerLink]="['/edit-wish', wish._id]">Edit</a>
       </ion-card-content>
     </ion-card>
   </ion-list>
