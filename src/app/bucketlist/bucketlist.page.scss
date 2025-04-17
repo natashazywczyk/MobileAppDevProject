@@ -59,6 +59,17 @@ ion-card-content {
   position: relative;
 }
 
+.image-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  z-index: 1;
+} 
+
 .links {
   position: absolute;
   bottom: -20px;
