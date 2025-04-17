@@ -45,6 +45,7 @@ export class EditWishPage implements OnInit {
         this.wishTitle = data.title;
         this.wishDescription = data.description;
         this.wishType = data.wishType;
+        this.dateAdded = data.dataAdded;
         this.dateGoal = data.dateGoal;
         this.wishPicture = data.wishPicture;
       },
@@ -61,7 +62,7 @@ export class EditWishPage implements OnInit {
       title: this.wishTitle,
       description: this.wishDescription,
       wishType: this.wishType,
-      dateAdded: this.startDate,
+      dateAdded: this.dateAdded,
       dateGoal: this.dateGoal,
       wishPicture: this.wishPicture,
     };
