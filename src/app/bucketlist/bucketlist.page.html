@@ -28,12 +28,13 @@
   <ion-list>
     <ion-card *ngFor="let wish of wishes">
       <img [alt]="wish.title" [src]="wish.wishPicture" />
+      <div class="image-overlay">{{wish.wishType}}</div>
       <ion-card-header>
         <ion-card-title>{{ wish.title }}</ion-card-title>
         <ion-card-subtitle>
-          {{ wish.wishType }}
+          Date Added: {{ wish.dateAdded }}
           </ion-card-subtitle>
-          <ion-card-subtitle>Date Added: {{wish.dateAdded}}
+          <ion-card-subtitle>Goal: {{wish.dateGoal.split('T')[0] }}
         </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
