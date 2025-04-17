@@ -27,10 +27,10 @@ export class NotificationsService {
             }
         }
 
-      // Initial check
+      //Initial check
       await this.checkWishDates();
 
-      // Then set up interval for future checks
+      //Then set up interval for future checks
       setInterval(() => this.checkWishDates(), 60000); // Check every minute
     } 
     catch (error) {
@@ -85,6 +85,7 @@ export class NotificationsService {
         });
         console.log('Notification shown successfully for:', wish.title);
       } 
+      //If notifications were previously denied
       else 
       {
         console.log('Notification permission not granted');
