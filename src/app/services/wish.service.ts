@@ -24,4 +24,14 @@ export class WishService {
   deleteWish(id: string): Observable<any> {
     return this.http.delete(`${this.dbUrl}/${id}`);
   }
+
+  // Get a wish by ID
+  getWishById(id: string): Observable<any> {
+    return this.http.get(`${this.dbUrl}/${id}`);
+  }
+
+  // Update a wish by ID
+  updateWish(id: string, updatedWish: any): Observable<any> {
+    return this.http.put(`${this.dbUrl}/${id}`, updatedWish);
+  }
 }
