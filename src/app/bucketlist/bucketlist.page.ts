@@ -11,6 +11,8 @@ import { RefreshService } from '../services/refresh.service';
 })
 export class BucketListPage implements OnInit {
   wishes: any[] = []; // Array to store wishes
+  allWishes: any[] = []; // Store all wishes
+  selectedType: string = 'all'; //By default, show all wishes
 
   constructor(private wishService: WishService, private refreshService: RefreshService) {}
 
@@ -28,10 +30,22 @@ export class BucketListPage implements OnInit {
   async loadWishes() {
     try {
       const data = await firstValueFrom(this.wishService.getWishes());
-      this.wishes = data; // Assign the fetched wishes to the local array
+      this.allWishes = data; // Store all wishes first
+      this.wishes = [...this.allWishes]; // Set initial wishes
+      this.filterWishes();
     } 
     catch (error) {
       console.error('Error fetching wishes:', error);
+    }
+  }
+
+  //Function to filter wishes based on selected type
+  //Set default to display all wishes
+  filterWishes() {
+    if (this.selectedType === 'all') {
+      this.wishes = [...this.allWishes];
+    } else {
+      this.wishes = this.allWishes.filter(wish => wish.wishType === this.selectedType);
     }
   }
 

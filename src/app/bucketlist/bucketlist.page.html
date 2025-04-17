@@ -13,6 +13,18 @@
     </ion-toolbar>
   </ion-header>
 
+  <!-- Add sorting dropdown -->
+  <ion-item>
+    <ion-label>Sort by Type</ion-label>
+    <ion-select [(ngModel)]="selectedType" (ionChange)="filterWishes()">
+      <ion-select-option value="all">All Types</ion-select-option>
+      <ion-select-option value="Hobby">Hobby</ion-select-option>
+      <ion-select-option value="Holiday">Holiday</ion-select-option>
+      <ion-select-option value="Food">Food</ion-select-option>
+      <ion-select-option value="Activity">Activity</ion-select-option>
+    </ion-select>
+  </ion-item>
+
   <ion-list>
     <ion-card *ngFor="let wish of wishes">
       <img [alt]="wish.title" [src]="wish.wishPicture" />
