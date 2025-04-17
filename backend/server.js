@@ -41,7 +41,7 @@ const wishModel = new mongoose.model('mywishes', wishSchema);
 // GET route to fetch all wishes
 app.get('/api/wishes', async (req, res) => 
     {
-     console.log('GET /api/wishes called');
+    console.log('GET /api/wishes called');
     const wishes = await wishModel.find({});
 
     res.status(200).json(wishes)
