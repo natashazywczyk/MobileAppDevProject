@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Wish</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Title</ion-label>
+        <br>
+        <ion-input type="text" placeholder="Enter title" [(ngModel)]="wishTitle" required></ion-input>
+      </ion-item>
+  
+      <br>
+  
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <br>
+        <ion-input type="text" placeholder="Enter description of wish" [(ngModel)]="wishDescription" required></ion-input>
+      </ion-item>
+  
+      <br>
+  
+      <ion-item>
+        <ion-label position="floating">Wish Type</ion-label>
+        <br>
+        <ion-select aria-label="type" interface="popover" placeholder="Select type" [(ngModel)]="wishType" required>
+          <ion-select-option value="Hobby">Hobby</ion-select-option>
+          <ion-select-option value="Holiday">Holiday</ion-select-option>
+          <ion-select-option value="Food">Food</ion-select-option>
+          <ion-select-option value="Activity">Activity</ion-select-option>
+        </ion-select>
+       </ion-item>
+  
+      <br>
+  
+      <ion-item>
+        <ion-label position="floating">Date Goal</ion-label>
+        <br>
+        <ion-datetime
+          presentation="date"
+          placeholder="Select a date"
+          [(ngModel)]="dateGoal"
+          [min]="startDate"
+          [max]="endDate"
+          aria-label="Select Date Goal"
+          required> <!--Improves focus on element-->
+        </ion-datetime>
+      </ion-item>
+  
+      <br>
+  
+      <ion-item>
+        <ion-label position="floating">Wish Picture</ion-label>
+        <br>
+        <ion-input type="url" placeholder="Enter picture to match wish" [(ngModel)]="wishPicture" required></ion-input>
+      </ion-item>
+    </ion-list>
+  
+    <br><br>
+  
+    <ion-button (click)="saveWish()">Edit Wish</ion-button>
+</ion-content>
