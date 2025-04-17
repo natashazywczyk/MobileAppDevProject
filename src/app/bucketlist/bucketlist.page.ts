@@ -39,7 +39,16 @@ export class BucketListPage implements OnInit {
     this.loadWishes(); // Refresh the list of wishes
   }
 
+  //Function to delete a wish
   async deleteWish(id: string) {
+    const confirmDelete = window.confirm('Are you sure you want to delete this wish?');
+
+    //If cancel is clicked, do not delete wish
+    if (!confirmDelete) {
+      return;
+    }
+
+    //Deletes wish from backend server using WishService
     try {
       await firstValueFrom(this.wishService.deleteWish(id));
       
