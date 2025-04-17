@@ -18,13 +18,19 @@
       <img [alt]="wish.title" [src]="wish.wishPicture" />
       <ion-card-header>
         <ion-card-title>{{ wish.title }}</ion-card-title>
-        <ion-card-subtitle>{{ wish.wishType }}</ion-card-subtitle>
+        <ion-card-subtitle>
+          {{ wish.wishType }}
+          </ion-card-subtitle>
+          <ion-card-subtitle>Date Added: {{wish.dateAdded}}
+        </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
         {{ wish.description }}
-        <br><br>
-        <a class="delete-link" (click)="deleteWish(wish._id)">Delete</a>
-        <a class="edit-link" [routerLink]="['/edit-wish', wish._id]">Edit</a>
+        <br>
+        <div class="links">
+          <a class="edit-link" [routerLink]="['/edit-wish', wish._id]">Edit</a>
+          <a class="delete-link" (click)="deleteWish(wish._id)">Delete</a>
+        </div>
       </ion-card-content>
     </ion-card>
   </ion-list>
