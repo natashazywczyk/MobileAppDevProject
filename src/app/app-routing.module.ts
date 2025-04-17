@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { EditWishPage } from './edit-wish/edit-wish.page';
 
 const routes: Routes = [
   {
@@ -18,7 +19,13 @@ const routes: Routes = [
     
     path: 'theme',
     loadChildren: () => import('./theme/theme.module').then( m => m.ThemePageModule)
-  }
+  },
+  {
+    path: 'edit-wish',
+    loadChildren: () => import('./edit-wish/edit-wish.module').then( m => m.EditWishPageModule)
+  },
+  { path: 'edit-wish/:id', component: EditWishPage }
+
 ];
 @NgModule({
   imports: [
