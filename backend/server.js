@@ -39,7 +39,8 @@ const wishSchema = new mongoose.Schema({
 const wishModel = new mongoose.model('mywishes', wishSchema);
 
 // GET route to fetch all wishes
-app.get('/api/wishes', async (req, res) => {
+app.get('/api/wishes', async (req, res) => 
+    {
      console.log('GET /api/wishes called');
     const wishes = await wishModel.find({});
 
@@ -47,7 +48,8 @@ app.get('/api/wishes', async (req, res) => {
 });
 
 // POST route to add a new wish
-app.post('/api/wishes', (req, res) => {
+app.post('/api/wishes', (req, res) => 
+{
     const { title, dateAdded, description, wishPicture, wishType, dateGoal } = req.body; // Store new wish
 
     // Create a new wish instance
@@ -70,6 +72,19 @@ app.get('/api/wishes/:id', async(req, res) =>
     const wish = await wishModel.findById(req.params.id); // Searches for id within database
     res.json(wish);
 })
+
+//PUT route to update a wish by ID
+app.put('/api/wishes/:id', async (req, res) => 
+{
+  try {
+    const updatedWish = await wishModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+
+    res.status(200).json({ message: 'Wish updated successfully', wish: updatedWish });
+  } 
+  catch (err) {
+    res.status(500).json({ error: 'Failed to update wish', details: err });
+  }
+});
 
 //Handles the movie deletion, server side
 app.delete('/api/wishes/:id', async (req, res) =>
